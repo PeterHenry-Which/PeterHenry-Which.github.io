@@ -307,10 +307,7 @@
     };
     document.body.appendChild(b);
   }
-})();
 
-(function () {
-  "use strict";
   var whichTest = {
     selector: ".center-content__main",
     debug: false,
