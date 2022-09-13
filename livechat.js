@@ -308,3 +308,99 @@
     document.body.appendChild(b);
   }
 })();
+
+(function () {
+  "use strict";
+  var whichTest = {
+    selector: "#which-live-chat",
+    debug: false,
+    init: function () {
+      helpers.elementLoaded(whichTest.selector, function () {
+        setTimeout(function (argument) {
+          whichTest.log("Test Ready!");
+          whichTest.variant();
+          whichTest.mainCss();
+        }, 1500);
+      });
+    },
+    mainCss: function () {
+      var mainCss =
+        "" +
+        "button.whi-greyout { background: #cccccc; pointer-events: none; } button.whi-greyout p{ /* color: grey; */ }" + // desktop
+        "";
+
+      var headofdoc = document.getElementsByTagName("head")[0];
+      var s = document.createElement("style");
+      s.setAttribute("type", "text/css");
+      s.appendChild(document.createTextNode(mainCss));
+      headofdoc.appendChild(s);
+    },
+
+    variant: function () {
+      if (document.querySelector("#which-live-chat")) {
+        document.querySelector("#which-live-chat").addEventListener(
+          "click",
+          function () {
+            document.querySelector(".embeddedServiceHelpButton button").click();
+            if (
+              document.querySelector(
+                ".embeddedServiceSidebarMinimizedDefaultUI"
+              )
+            ) {
+              document
+                .querySelector(".embeddedServiceSidebarMinimizedDefaultUI")
+                .click();
+            }
+          },
+          false
+        );
+
+        //check if agent is offline
+        setTimeout(function (argument) {
+          if (
+            document
+              .querySelector(".embeddedServiceHelpButton button .message")
+              .textContent.indexOf("Offline") > -1
+          ) {
+            //
+            document.querySelector("#which-live-chat").textContent =
+              "Chat Unavailable";
+            document
+              .querySelector("#which-live-chat")
+              .classList.add("whi-greyout");
+          } else {
+            document.querySelector("#which-live-chat").textContent =
+              "Start Live chat";
+            document
+              .querySelector("#which-live-chat")
+              .classList.remove("whi-greyout");
+          }
+        }, 1000);
+      }
+    },
+
+    fireTag: function (element, value) {},
+    log: function (obj) {
+      if (whichTest.debug === true) {
+        console.log(obj);
+      }
+    },
+  };
+  var helpers = {
+    elementLoaded: function (ele, callback) {
+      whichTest.log("elementLoaded::  " + ele + " - Checking...");
+      window.clearTimeout(whichTest.eleTimer);
+      if (document.querySelectorAll(ele).length > 0) {
+        if (typeof callback === "function") {
+          whichTest.log("elementLoaded::  " + ele + " - Found!");
+          callback();
+        }
+      } else {
+        whichTest.eleTimer = window.setTimeout(function () {
+          helpers.elementLoaded(ele, callback);
+        }, 100);
+      }
+    },
+  };
+  whichTest.init();
+})();
