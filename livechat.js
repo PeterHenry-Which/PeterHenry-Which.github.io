@@ -324,21 +324,10 @@
       });
     },
     mainCss: function () {
-      var mainCss = `button.whi-greyout { 
-                        background: #cccccc; 
-                        pointer-events: none; 
-                    }
-                    .embeddedServiceHelpButton .helpButton .uiButton {
-                        background-color: #e30613;
-                        font-family: "Open Sans", sans-serif;
-                    }
-                    .embeddedServiceHelpButton .helpButton .uiButton:focus {
-                        outline: 1px solid #e30613;
-                    }
-                    .embeddedServiceHelpButton .helpButton .uiButton.helpButtonDisabled {
-                        display: none;
-                    } 
-        `;
+      var mainCss =
+        "" +
+        "button.whi-greyout { background: #cccccc; pointer-events: none; } button.whi-greyout p{ /* color: grey; */ }" + // desktop
+        "";
 
       var headofdoc = document.getElementsByTagName("head")[0];
       var s = document.createElement("style");
