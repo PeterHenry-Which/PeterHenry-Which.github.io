@@ -311,7 +311,7 @@
 
 (function () {
   "use strict";
-  let whichTest = {
+  var whichTest = {
     selector: "#which-live-chat",
     debug: false,
     init: function () {
@@ -324,7 +324,7 @@
       });
     },
     mainCss: function () {
-      let mainCss = `button.whi-greyout { 
+      var mainCss = `button.whi-greyout { 
                         background: #cccccc; 
                         pointer-events: none; 
                     }
