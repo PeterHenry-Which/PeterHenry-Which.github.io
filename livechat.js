@@ -309,22 +309,22 @@
   }
 })();
 
-(function () {
+(() => {
   "use strict";
   var whichTest = {
     selector: "#which-live-chat",
     debug: false,
-    init: function () {
+    init: () => {
       helpers.elementLoaded(whichTest.selector, function () {
-        setTimeout(function (argument) {
+        setTimeout((argument) => {
           whichTest.log("Test Ready!");
           whichTest.variant();
           whichTest.mainCss();
         }, 1500);
       });
     },
-    mainCss: function () {
-      var mainCss = `button.whi-greyout { 
+    mainCss: () => {
+      const mainCss = `button.whi-greyout { 
                     background: #cccccc; 
                     pointer-events: none; 
                 }
@@ -337,21 +337,21 @@
                 }
                 .embeddedServiceHelpButton .helpButton .uiButton.helpButtonDisabled {
                     display: none;
-                } 
+                }       
         `;
 
-      var headofdoc = document.getElementsByTagName("head")[0];
-      var s = document.createElement("style");
+      const headofdoc = document.getElementsByTagName("head")[0];
+      const s = document.createElement("style");
       s.setAttribute("type", "text/css");
       s.appendChild(document.createTextNode(mainCss));
       headofdoc.appendChild(s);
     },
 
-    variant: function () {
+    variant: () => {
       if (document.querySelector("#which-live-chat")) {
         document.querySelector("#which-live-chat").addEventListener(
           "click",
-          function () {
+          () => {
             document.querySelector(".embeddedServiceHelpButton button").click();
             if (
               document.querySelector(
@@ -367,7 +367,7 @@
         );
 
         //check if agent is offline
-        setTimeout(function (argument) {
+        setTimeout(() => {
           if (
             document
               .querySelector(".embeddedServiceHelpButton button .message")
@@ -390,15 +390,14 @@
       }
     },
 
-    fireTag: function (element, value) {},
-    log: function (obj) {
+    log: (obj) => {
       if (whichTest.debug === true) {
         console.log(obj);
       }
     },
   };
-  var helpers = {
-    elementLoaded: function (ele, callback) {
+  const helpers = {
+    elementLoaded: (ele, callback) => {
       whichTest.log("elementLoaded::  " + ele + " - Checking...");
       window.clearTimeout(whichTest.eleTimer);
       if (document.querySelectorAll(ele).length > 0) {
@@ -407,7 +406,7 @@
           callback();
         }
       } else {
-        whichTest.eleTimer = window.setTimeout(function () {
+        whichTest.eleTimer = window.setTimeout(() => {
           helpers.elementLoaded(ele, callback);
         }, 100);
       }
