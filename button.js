@@ -17,6 +17,7 @@
                           background: #cccccc; 
                           pointer-events: none; 
                       }
+                      /* this is in a seperate file from GTM */
                       .embeddedServiceHelpButton .helpButton .uiButton {
                           background-color: #e30613;
                           font-family: "Open Sans", sans-serif;
