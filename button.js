@@ -1,6 +1,6 @@
 (() => {
   "use strict";
-  var whichTest = {
+  const whichTest = {
     selector: "#which-live-chat",
     debug: false,
     init: () => {
@@ -14,20 +14,19 @@
     },
     mainCss: () => {
       const mainCss = `button.whi-greyout { 
-                    background: #cccccc; 
-                    pointer-events: none; 
-                }
-                .embeddedServiceHelpButton .helpButton .uiButton {
-                    background-color: #e30613;
-                    font-family: "Open Sans", sans-serif;
-                }
-                .embeddedServiceHelpButton .helpButton .uiButton:focus {
-                    outline: 1px solid #e30613;
-                }
-                .embeddedServiceHelpButton .helpButton .uiButton.helpButtonDisabled {
-                    display: none;
-                }       
-        `;
+                          background: #cccccc; 
+                          pointer-events: none; 
+                      }
+                      .embeddedServiceHelpButton .helpButton .uiButton {
+                          background-color: #e30613;
+                          font-family: "Open Sans", sans-serif;
+                      }
+                      .embeddedServiceHelpButton .helpButton .uiButton:focus {
+                          outline: 1px solid #e30613;
+                      }
+                      .embeddedServiceHelpButton .helpButton .uiButton.helpButtonDisabled {
+                          display: none;
+                      }`;
 
       const headofdoc = document.getElementsByTagName("head")[0];
       const s = document.createElement("style");
