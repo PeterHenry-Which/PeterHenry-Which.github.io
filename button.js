@@ -1,6 +1,6 @@
 (() => {
   "use strict";
-  const whichTest = {
+  let whichTest = {
     selector: "#which-live-chat",
     debug: false,
     init: () => {
