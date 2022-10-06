@@ -58,7 +58,7 @@
           if (
             document.querySelector(
               ".embeddedServiceHelpButton button .message"
-            ) ||
+            ) &&
             document
               .querySelector(".embeddedServiceHelpButton button .message")
               .textContent.indexOf("Offline") > -1
