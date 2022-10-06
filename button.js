@@ -2,11 +2,9 @@
   "use strict";
   const whichTest = {
     selector: "#which-live-chat",
-    debug: false,
     init: () => {
       helpers.elementLoaded(whichTest.selector, function () {
         setTimeout((argument) => {
-          whichTest.log("Test Ready!");
           whichTest.variant();
           whichTest.mainCss();
         }, 1500);
@@ -58,6 +56,9 @@
         //check if agent is offline
         setTimeout(() => {
           if (
+            document.querySelector(
+              ".embeddedServiceHelpButton button .message"
+            ) ||
             document
               .querySelector(".embeddedServiceHelpButton button .message")
               .textContent.indexOf("Offline") > -1
@@ -78,20 +79,12 @@
         }, 1000);
       }
     },
-
-    log: (obj) => {
-      if (whichTest.debug === true) {
-        console.log(obj);
-      }
-    },
   };
   const helpers = {
     elementLoaded: (ele, callback) => {
-      whichTest.log("elementLoaded::  " + ele + " - Checking...");
       window.clearTimeout(whichTest.eleTimer);
       if (document.querySelectorAll(ele).length > 0) {
         if (typeof callback === "function") {
-          whichTest.log("elementLoaded::  " + ele + " - Found!");
           callback();
         }
       } else {
